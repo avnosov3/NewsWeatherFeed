@@ -7,7 +7,12 @@ from . import constants
 
 @dp.message_handler(commands='start')
 async def send_welcome(message: types.Message):
-    await message.answer('hi, achiva')
+    await message.answer(constants.WELCOME_MESSAGE)
+
+
+@dp.message_handler(commands='help')
+async def send_help(message: types.Message):
+    await message.answer(constants.HELP_MESSAGE)
 
 
 @dp.message_handler(commands='weather')
