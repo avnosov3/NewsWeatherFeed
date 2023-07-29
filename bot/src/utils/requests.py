@@ -1,6 +1,6 @@
 from random import choice
 
-from core.aio_client import get
+from core.aio_client import get, post
 
 from . import constants
 from core.config import settings
