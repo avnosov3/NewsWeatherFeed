@@ -1,0 +1,51 @@
+from django.db import models
+
+
+class Telegram(models.Model):
+    username = models.CharField(
+        max_length=256,
+        verbose_name='Имя пользователя'
+    )
+    message = models.TextField(verbose_name='Сообщение пользователя')
+    date = models.DateTimeField(verbose_name='Дата отправки сообщения')
+    chat = models.CharField(
+        max_length=256,
+        verbose_name='Чат в котором отправили запрос',
+        null=True
+    )
+
+    class Meta:
+        ordering = ('-date',)
+        verbose_name = 'Информация из телеграмма'
+        verbose_name_plural = 'Информация из телеграмма'
+
+    OUT = (
+        'username={username:.15} '
+        'message={message:.12} '
+        'date={date} '
+        'chat={chat} '
+    )
+
+    def __str__(self):
+        return self.OUT.format(
+            username=self.username,
+            message=self.message,
+            date=self.date,
+            chat=self.chat
+        )
+
+
+class CommandStatistics(models.Model):
+    command_name = models.CharField(
+        max_length=50, verbose_name='Название команды'
+    )
+    call_count = models.PositiveIntegerField(
+        default=0, verbose_name='Количество вызовов'
+    )
+
+    class Meta:
+        verbose_name = 'Статистика команды'
+        verbose_name_plural = 'Статистика команд'
+
+    def __str__(self):
+        return f'У команды "{self.command_name}" нажатий "{self.call_count}"'
