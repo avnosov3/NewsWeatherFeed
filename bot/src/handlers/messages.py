@@ -5,11 +5,10 @@ from aiogram import types
 from main import dp
 from utils import requests
 from . import constants
-from core.aio_client import post
-from core.config import settings
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
+
 
 @dp.message_handler(commands='start')
 async def send_welcome(message: types.Message):
