@@ -1,7 +1,7 @@
 from aiogram import types
 
 from main import dp
-from utils.get_weather import get_weather
+from utils import requests
 from . import constants
 
 
@@ -15,7 +15,14 @@ async def send_weather(message: types.Message):
     args = message.get_args()
     if args:
         city = args.strip()
-        weather_info = await get_weather(city)
+        weather_info = await requests.get_weather(city)
         await message.answer(weather_info)
     else:
         await message.answer(constants.FAQ_WEATHER)
+
+
+@dp.message_handler(commands='news')
+async def send_news(message: types.Message):
+    await message.answer(
+        await requests.get_news()
+    )

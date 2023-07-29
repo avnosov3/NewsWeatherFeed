@@ -7,3 +7,9 @@ WEATHER_URL = (
     'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}'
     '&units=metric'
 )
+
+RANDOM_ARTICLE = 'Ловите случайную статью "{}". Ссылка {}'
+
+NEWS_URL = (
+    'https://newsapi.org/v2/top-headlines?country=ru&apiKey={}'
+)

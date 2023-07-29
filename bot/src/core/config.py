@@ -8,6 +8,7 @@ load_dotenv()
 class Settings(BaseSettings):
     TELEGRAM_TOKEN: str
     WEATHER_TOKEN: str
+    NEWS_TOKEN: str
 
     class Config:
         env_file = ".env"

@@ -1,3 +1,5 @@
+from random import choice
+
 from core.aio_client import get
 
 from . import constants
@@ -19,4 +21,18 @@ async def get_weather(city):
         city,
         response['main']['temp'],
         response['main']['feels_like']
+    )
+
+
+async def get_news():
+    try:
+        response = await get(
+            constants.NEWS_URL.format(settings.NEWS_TOKEN)
+        )
+    except Exception:
+        return constants.API_ERROR
+    article = choice(response['articles'])
+    return constants.RANDOM_ARTICLE.format(
+        article['title'],
+        article['url']
     )
