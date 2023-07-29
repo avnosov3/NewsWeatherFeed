@@ -36,3 +36,18 @@ async def get_news():
         article['title'],
         article['url']
     )
+
+
+async def send_info(message, logger):
+    try:
+        await post(
+            settings.DASHBOARD_URL,
+            data=dict(
+                username=message.from_user.username,
+                message=message.text,
+                date=message.date.isoformat(),
+                chat=message.chat.title
+            )
+        )
+    except Exception as error:
+        logger.error(constants.DASHBOARD_ERROR.format(error))

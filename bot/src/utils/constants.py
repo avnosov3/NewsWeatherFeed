@@ -22,3 +22,5 @@ BOT_COMMANDS = [
     BotCommand(command='weather', description='Узнать погоду'),
     BotCommand(command='news', description='Узнать случайную новость'),
 ]
+
+DASHBOARD_ERROR = 'Проблема со связью с дешбордом {}'

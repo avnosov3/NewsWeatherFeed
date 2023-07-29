@@ -12,5 +12,3 @@ HELP_MESSAGE = (
     '/weather [город] \n'
     '/news'
 )
-
-DASHBOARD_ERROR = 'Проблема со связью с дешбордом {}'
