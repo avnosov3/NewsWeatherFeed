@@ -70,7 +70,7 @@ docker compose exec web poetry run python manage.py createsuperuser
 ```
 6. Запустить бот  
   
-Ссылка на бот: https://t.me/CogniMateWeatherBot
+  Ссылка на бот: https://t.me/CogniMateWeatherBot
 
 
 * [История сообщений бота](http://127.0.0.1/telegram/)
