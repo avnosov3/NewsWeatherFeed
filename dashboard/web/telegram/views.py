@@ -1,13 +1,10 @@
 from django.shortcuts import render
-from .models import Telegram
+from .models import BotAnswers
 
 
 def index(request):
     user_filter = request.GET.get('user')
-    chat_filter = request.GET.get('chat')
-    messages = Telegram.objects.all()
+    messages = BotAnswers.objects.all()
     if user_filter:
-        messages = Telegram.objects.filter(username__icontains=user_filter)
-    if chat_filter:
-        messages = Telegram.objects.filter(chat__icontains=chat_filter)
+        messages = BotAnswers.objects.filter(username__icontains=user_filter)
     return render(request, 'index.html', dict(messages=messages))

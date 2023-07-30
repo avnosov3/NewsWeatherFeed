@@ -38,15 +38,29 @@ async def get_news():
     )
 
 
-async def send_info(message, logger):
+async def send_commands(message, logger):
     try:
         await post(
-            settings.DASHBOARD_URL,
+            settings.COMMANDS_URL,
             data=dict(
                 username=message.from_user.username,
                 message=message.text,
                 date=message.date.isoformat(),
                 chat=message.chat.title
+            )
+        )
+    except Exception as error:
+        logger.error(constants.DASHBOARD_ERROR.format(error))
+
+
+async def send_answer(message, answer, logger):
+    try:
+        await post(
+            settings.ANSWERS_URL,
+            data=dict(
+                username=message.from_user.username,
+                response=answer,
+                date=message.date.isoformat(),
             )
         )
     except Exception as error:

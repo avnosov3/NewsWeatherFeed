@@ -1,16 +1,16 @@
 from django.contrib import admin
-from .models import Telegram, CommandStatistics
+from .models import TelegramCommands, CommandStatistics, BotAnswers
 from django.db.models import Count
 
 
-@admin.register(Telegram)
-class TelegramAdmin(admin.ModelAdmin):
+@admin.register(TelegramCommands)
+class TelegramCommandsAdmin(admin.ModelAdmin):
     list_display = (
         'username', 'message', 'date', 'chat'
     )
     readonly_fields = ('username',)
     list_display_links = ('message',)
-    search_fields = ('customer', 'item')
+    search_fields = ('username', 'message')
     list_filter = ('username', 'chat')
     empty_value_display = '-пусто-'
 
@@ -29,7 +29,7 @@ class CommandStatisticsAdmin(admin.ModelAdmin):
         return False
 
     def get_queryset(self, request):
-        unique_commands = Telegram.objects.values(
+        unique_commands = TelegramCommands.objects.values(
             'message'
         ).annotate(
             count=Count('username')
@@ -47,3 +47,14 @@ class CommandStatisticsAdmin(admin.ModelAdmin):
                 command_stat.save()
 
         return CommandStatistics.objects.all()
+
+
+@admin.register(BotAnswers)
+class BotAnswersAdmin(admin.ModelAdmin):
+    list_display = (
+        'username', 'response', 'date'
+    )
+    readonly_fields = ('username',)
+    search_fields = ('username',)
+    list_filter = ('username',)
+    empty_value_display = '-пусто-'

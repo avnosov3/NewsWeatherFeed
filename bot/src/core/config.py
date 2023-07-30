@@ -9,7 +9,8 @@ class Settings(BaseSettings):
     TELEGRAM_TOKEN: str
     WEATHER_TOKEN: str
     NEWS_TOKEN: str
-    DASHBOARD_URL: str
+    COMMANDS_URL: str
+    ANSWERS_URL: str
 
     class Config:
         env_file = ".env"

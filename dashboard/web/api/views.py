@@ -1,18 +1,20 @@
-from rest_framework import mixins, viewsets, filters
+from rest_framework import mixins, viewsets
 
-from django_filters.rest_framework import DjangoFilterBackend
-
-from .serializers import TelegramSerializer
-from telegram.models import Telegram
+from .serializers import TelegramSerializer, BotAnsersSetializer
+from telegram.models import TelegramCommands, BotAnswers
 
 
 class InfoCreateListViewSet(
     mixins.CreateModelMixin,
     viewsets.GenericViewSet
 ):
-    queryset = Telegram.objects.all()
+    queryset = TelegramCommands.objects.all()
     serializer_class = TelegramSerializer
 
-    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
-    filterset_fields = ('username', 'chat')
-    ordering_fields = ('date',)
+
+class AnswersCreateListViewSet(
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet
+):
+    queryset = BotAnswers.objects.all()
+    serializer_class = BotAnsersSetializer
