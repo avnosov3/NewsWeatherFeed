@@ -69,6 +69,7 @@ docker compose exec web poetry run python manage.py migrate
 docker compose exec web poetry run python manage.py createsuperuser
 ```
 6. Запустить бот  
+  
 Ссылка на бот: https://t.me/CogniMateWeatherBot
 
 
