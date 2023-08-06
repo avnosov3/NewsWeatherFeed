@@ -34,7 +34,7 @@
 
 1. Клонировать репозиторий и перейти в него в командной строке
 ```
-git clone git@github.com:avnosov3/weather.git
+git clone git@github.com:avnosov3/NewsWeatherFeed.git
 cd weather/
 ```
 2. Создать файл .env
