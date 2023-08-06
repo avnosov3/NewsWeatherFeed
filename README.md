@@ -49,9 +49,9 @@ POSTGRES_PASSWORD=<Указать пароль пользователя>
 DB_HOST=db
 DB_PORT=5432
 
-TELEGRAM_TOKEN=5597408983:AAEROsD9jSDnxbKXDNpcfh_vHfXv92PI-Rs
-WEATHER_TOKEN=18525583eb6a26d6db91bc189c6d5d87
-NEWS_TOKEN=21145ed0c6e24777b09c25a9607b96df
+TELEGRAM_TOKEN=<Указать токен>
+WEATHER_TOKEN=<Указать токен>
+NEWS_TOKEN=<Указать токен>
 COMMANDS_URL=http://web:8888/api/v1/info/
 ANSWERS_URL=http://web:8888/api/v1/answers/
 ``` 
@@ -68,9 +68,7 @@ docker compose exec web poetry run python manage.py migrate
 ```
 docker compose exec web poetry run python manage.py createsuperuser
 ```
-6. Запустить бот  
-  
-    Ссылка на бот: https://t.me/CogniMateWeatherBot
+
   
   
 * [История сообщений бота](http://127.0.0.1/telegram/)
